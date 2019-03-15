@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 //import logo from './image/logo.svg';
 import logo from './image/icon_300.png';
 import './App.css';
+import Footer from './components/footer';
 
 class App extends Component {
   constructor(props) {
@@ -25,16 +26,9 @@ class App extends Component {
           </p>
           「キャッチコピー」
           <br/>
-          <a href="https://www.google.co.jp/">アプリについて</a>
-          <a href="https://www.yahoo.co.jp/">製作者について</a>
-          <a href="https://www.yahoo.co.jp/">利用規約</a>
-          <a href="https://www.yahoo.co.jp/">お問い合わせ</a>
-          <a href="https://www.yahoo.co.jp/">プライバシーポリシー</a>
-
-          
           <p>{this.state.text}</p>
         </header>
-        
+        <Footer />
       </div>
     );
     
