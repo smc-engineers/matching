@@ -6,6 +6,7 @@ import { store } from './store/store.js';
 
 import './index.css';
 import App from './App';
+import registerServiceWorker from './registerServiceWorker';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUserPlus, faSpinner } from '@fortawesome/free-solid-svg-icons'
 
@@ -18,3 +19,5 @@ ReactDOM.render(
     </BrowserRouter>
   </Provider>,
   document.getElementById('root'));
+
+  registerServiceWorker();
