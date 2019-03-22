@@ -1,23 +1,36 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import logo from '../image/icon_300.png';
+import { Link } from 'react-router-dom';
+
+import { openLoginDialog } from '../actions/auth';
+
+import logo from '../image/icon_180.png';
 
 
 class Header extends Component {
   constructor(props){
     super(props)
+    this.onClickToOpenLoginDialog = this.onClickToOpenLoginDialog.bind(this)
     this.state = {
       text: "",
     };
   }
 
+  onClickToOpenLoginDialog(){
+    this.props.openLoginDialog()
+  }
+
   render(){
     return(
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <div className="header-left">
+          <img src={logo} alt="logo" />
+          <Link to={'/'}>マッチング</Link>
+        </div>
+        <div className="header-right">
+          <input className="cinnamon-btn" type="button" value="ログイン" onClick={() => this.onClickToOpenLoginDialog()} />
+        </div>
 
-        <p>タイトルロゴ</p>
-        
         <p className="App-intro">
           <input type="text" value={ this.state.text } placeholder='曲名、作曲者名を記入してください'
             onChange={e => {this.setState({text: e.target.value})}}/>
@@ -29,8 +42,10 @@ class Header extends Component {
   }
 }
 
-const mapStateToProps = state => ({})
+const mapStateToProps = state => ({
+  isShowLoginDialog: state.auth.isShowLoginDialog
+})
 
-const mapDispatchToProps = ({})
+const mapDispatchToProps = ({ openLoginDialog })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header)
