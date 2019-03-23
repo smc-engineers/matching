@@ -27,6 +27,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "build": "env-cmd ./config/.env.local react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
