@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router';
 
 import { openLoginDialog } from '../actions/auth';
 
@@ -19,6 +20,12 @@ class Header extends Component {
   onClickToOpenLoginDialog(){
     this.props.openLoginDialog()
   }
+  handleToAboutPage = () => {
+    this.props.history.push({
+      pathname: '/searchresult',
+      state: { searchword: this.state.text }
+    })
+  }
 
   render(){
     return(
@@ -34,9 +41,9 @@ class Header extends Component {
         <p className="App-intro">
           <input type="text" value={ this.state.text } placeholder='曲名、作曲者名を記入してください'
             onChange={e => {this.setState({text: e.target.value})}}/>
-          <button type="submit"  name='action' value='send'>検索</button>
+          <button type="submit"  name='action' value='send' onClick={this.handleToAboutPage}>検索</button>
         </p>
-        <p>{this.state.text}</p>
+        {/* <p>{this.state.text}</p> */}
       </header>
     )
   }
@@ -48,4 +55,4 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = ({ openLoginDialog })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header))
