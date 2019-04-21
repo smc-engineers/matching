@@ -1,5 +1,5 @@
 {
-  "name": "matching",
+  "name": "smc-matching-front",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -11,36 +11,25 @@
     "i": "^0.3.6",
     "lodash": "^4.17.11",
     "moment": "^2.22.2",
-    "npm": "^6.4.1",
+    "npm": "^6.9.0",
     "qs": "^6.5.2",
+    "react": "^16.5.1",
     "react-bootstrap": "^0.32.4",
+    "react-dom": "^16.5.1",
+    "react-redux": "^5.0.7",
     "react-router-bootstrap": "^0.24.4",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "1.1.5",
+    "redux": "^4.0.0",
     "redux-devtools-extension": "^2.13.5",
     "redux-form": "^7.4.2",
-    "prop-types": "^15.7.2",
-    "react": "^16.8.2",
-    "react-dom": "^16.8.2",
-    "react-fetch": "0.0.9",
-    "react-redux": "^6.0.1",
-    "react-router": "^4.3.1",
-    "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.5",
-    "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "serve": "^10.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "build": "env-cmd ./config/.env.local react-scripts build",
+    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+  }
 }
