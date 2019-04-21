@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 
 import { openLoginDialog } from '../actions/auth';
+import { searchWord } from '../actions/search';
 
 import logo from '../image/icon_180.png';
 
@@ -12,6 +13,7 @@ class Header extends Component {
   constructor(props){
     super(props)
     this.onClickToOpenLoginDialog = this.onClickToOpenLoginDialog.bind(this)
+    this.handleToAboutPage = this.handleToAboutPage.bind(this)
     this.state = {
       text: "",
     };
@@ -20,11 +22,13 @@ class Header extends Component {
   onClickToOpenLoginDialog(){
     this.props.openLoginDialog()
   }
-  handleToAboutPage = () => {
-    this.props.history.push({
-      pathname: '/searchresult',
-      state: { searchword: this.state.text }
-    })
+
+  async handleToAboutPage(){
+    // this.props.history.push({
+    //   pathname: '/searchresult',
+    //   state: { searchword: this.state.text }
+    // })
+    await this.props.searchWord()
   }
 
   render(){
@@ -53,6 +57,6 @@ const mapStateToProps = state => ({
   isShowLoginDialog: state.auth.isShowLoginDialog
 })
 
-const mapDispatchToProps = ({ openLoginDialog })
+const mapDispatchToProps = ({ searchWord, openLoginDialog })
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Header))
