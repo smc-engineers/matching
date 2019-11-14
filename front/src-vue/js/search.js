@@ -10,7 +10,7 @@ var app = new Vue({
         onLoadSongs: function(){
             $.ajax({
                 url : 'http://localhost:3000/api/v1/',
-                type : 'GET',
+                type : 'POST',
                 dataType: 'json',
                 data:{"word":this.searchWord}
                 //jsonp: 'callback',
