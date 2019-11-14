@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <!-- IE対応 -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!-- マルチデバイス対応 -->
+        <meta name="viewport" content="width=device-width, initial=1">
+        
+        <!-- OGP記述 -->
+        <meta property="og:title" content="Harmorearth">
+        <meta property="og:description" content="より良い合唱体験を提供するサービス">
+
+        <title>Harmorearth</title>
+        <link rel="stylesheet" href="css/index.css"> 
+        <link rel="shortcut icon" href="../public/favicon.ico">   
+        
+
+    </head>
+    <body>
+        <a href="index.html"><img src="../public/icon_180.png" alt="top" title="top"></a>
+        <div id="app">
+            <form action="search.html">
+                <input type="text" v-model="searchWord" name="searchWord" placeholder="キーワードを入力" value="">
+                <input type="button" name="search" value="検索" v-on:click="onLoadSongs()" >
+            </form>
+            
+            <!-- <table border="1">
+                <tr><th>name</th></tr>
+                <tr v-for="item in song_lists">
+                    <td>{{item.name}}</td>
+                </tr>
+        
+            </table> -->
+            <ul v-for="item in song_lists">
+                <li>{{item.name}}</a>
+                    <ul>
+                        <li>作詩 : {{item.poetry}}</li>
+                        <li>作曲 : {{item.composition}}</li>
+                        <li>楽譜 : <a v-bind:href="item.url">{{item.url}}</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+        </div>
+
+        <!-- jsファイルの読み込み -->
+        <script src="js/jquery/jquery-3.4.1.js"></script>
+        <script src="js/vue/vue.js"></script>
+        <script src="js/search.js"></script>
+    </body>
+</html>
